@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123d34">
+  <meta name="description" content="Aura Bouquet & Hampers Studio — galeri buket bunga, buket buah, buket uang, seserahan, dan hampers istimewa di Jl. Pancasila.">
+
+  <title>Aura Bouquet & Hampers Studio | Art of Thoughtful Gifting</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       AURA BOUQUET & HAMPERS STUDIO
+       Single-file website: HTML + CSS + JS
+    ========================================= */
+
+    :root {
+      --emerald: #123d34;
+      --emerald-light: #1e594a;
+      --navy: #142534;
+      --gold: #b99a5d;
+      --champagne: #eadbb9;
+      --cream: #faf8f2;
+      --white: #fffefa;
+      --ink: #24332e;
+      --muted: #748078;
+      --line: rgba(18, 61, 52, 0.13);
+      --shadow: 0 20px 60px rgba(20, 45, 36, 0.10);
+      --radius: 22px;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Plus Jakarta Sans", sans-serif;
+      --container: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      color: white;
+      background: var(--emerald);
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 44px));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading.center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 15px;
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--emerald);
+      font-family: var(--serif);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 6.6vw, 6.1rem);
+      letter-spacing: -0.055em;
+    }
+
+    h2 {
+      font-size: clamp(2.1rem, 4.5vw, 3.7rem);
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      font-size: 1.55rem;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .section-heading > p {
+      margin-top: 17px;
+      font-size: 0.96rem;
+    }
+
+    .text-gold {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .divider {
+      width: 65px;
+      height: 2px;
+      background: var(--gold);
+      margin: 22px 0;
+    }
+
+    /* Navigation */
+
+    .announcement {
+      padding: 8px 15px;
+      background: var(--emerald);
+      color: var(--champagne);
+      text-align: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 50;
+      top: 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(250, 248, 242, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-container {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-symbol {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1.5rem;
+    }
+
+    .brand-name {
+      color: var(--emerald);
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .brand-name small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 0.57rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: #536159;
+      font-size: 0.79rem;
+      font-weight: 700;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::after {
+      position: absolute;
+      right: 0;
+      bottom: -7px;
+      left: 0;
+      height: 1px;
+      background: var(--gold);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--emerald);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 43px;
+      height: 43px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--emerald);
+      font-size: 1.35rem;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 95px;
+      background:
+        radial-gradient(circle at 8% 10%, rgba(234, 219, 185, 0.38), transparent 30%),
+        var(--cream);
+    }
+
+    .hero::before {
+      position: absolute;
+      top: 40px;
+      right: -130px;
+      width: 380px;
+      height: 380px;
+      border: 1px solid rgba(185, 154, 93, 0.19);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.93fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-copy h1 {
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy > p {
+      max-width: 550px;
+      font-size: 0.98rem;
+    }
+
+    .hero-description {
+      margin-bottom: 27px;
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-top: 35px;
+      color: var(--muted);
+      font-size: 0.77rem;
+    }
+
+    .note-symbol {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      flex-shrink: 0;
+      place-items: center;
+      border: 1px solid rgba(185, 154, 93, 0.5);
+      border-radius: 50%;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1.3rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 535px;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0 25px 24px 30px;
+      overflow: hidden;
+      border-radius: 190px 190px 25px 25px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+
+    .hero-visual:hover .hero-photo img {
+      transform: scale(1.035);
+    }
+
+    .hero-stamp {
+      position: absolute;
+      top: 36px;
+      right: -7px;
+      display: grid;
+      width: 100px;
+      height: 100px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.65);
+      border-radius: 50%;
+      background: rgba(234, 219, 185, 0.91);
+      color: var(--emerald);
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      line-height: 1.35;
+      text-align: center;
+      transform: rotate(8deg);
+    }
+
+    .hero-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: min(260px, 78%);
+      padding: 20px 22px;
+      border: 1px solid rgba(255,255,255,0.65);
+      border-radius: 17px;
+      background: rgba(255, 254, 250, 0.89);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-caption strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--emerald);
+      font-family: var(--serif);
+      font-size: 1.15rem;
+    }
+
+    .hero-caption span {
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    /* Brand qualities */
+
+    .qualities {
+      padding: 27px 0;
+      border-block: 1px solid var(--line);
+      background: rgba(255, 254, 250, 0.66);
+    }
+
+    .qualities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .quality {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--emerald);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .quality-icon {
+      display: grid;
+      width: 39px;
+      height: 39px;
+      flex-shrink: 0;
+      place-items: center;
+      border-radius: 50%;
+      background: #f0e7d5;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      align-items: center;
+      gap: 75px;
+    }
+
+    .about-image {
+      position: relative;
+      min-height: 510px;
+    }
+
+    .about-image img {
+      position: absolute;
+      inset: 0 35px 30px 0;
+      width: calc(100% - 35px);
+      height: calc(100% - 30px);
+      border-radius: 170px 170px 22px 22px;
+      object-fit: cover;
+    }
+
+    .about-image::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 60%;
+      height: 42%;
+      border: 1px solid var(--gold);
+      border-radius: 18px;
+      content: "";
+      z-index: -1;
+    }
+
+    .about-copy h2 {
+      margin-bottom: 20px;
+    }
+
+    .about-copy p {
+      margin-bottom: 17px;
+      font-size: 0.91rem;
+    }
+
+    .signature {
+      margin-top: 24px;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-style: italic;
+    }
+
+    /* Categories */
+
+    .catalog-section {
+      background: #f1eee6;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .catalog-card {
+      overflow: hidden;
+      border: 1px solid rgba(18, 61, 52, 0.09);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 8px 30px rgba(20, 45, 36, 0.035);
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .catalog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3.3;
+      background: #e8e1d5;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s ease;
+    }
+
+    .catalog-card:hover .card-image img {
+      transform: scale(1.06);
+    }
+
+    .image-index {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: grid;
+      width: 37px;
+      height: 37px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 50%;
+      background: rgba(255, 254, 250, 0.85);
+      color: var(--emerald);
+      backdrop-filter: blur(10px);
+      font-family: var(--serif);
+      font-size: 0.9rem;
+    }
+
+    .zoom-indicator {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.65);
+      border-radius: 50%;
+      background: rgba(255, 254, 250, 0.85);
+      color: var(--emerald);
+      opacity: 0;
+      transform: translateY(5px);
+      transition: 0.3s ease;
+    }
+
+    .catalog-card:hover .zoom-indicator {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card-category {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--gold);
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .card-content h3 {
+      margin-bottom: 12px;
+      font-size: 1.5rem;
+    }
+
+    .card-content p {
+      margin-bottom: 19px;
+      font-size: 0.83rem;
+    }
+
+    .text-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      border-bottom: 1px solid rgba(185, 154, 93, 0.55);
+      padding: 0 0 5px;
+      background: transparent;
+      color: var(--emerald);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .text-button span {
+      transition: transform 0.25s ease;
+    }
+
+    .text-button:hover span {
+      transform: translateX(5px);
+    }
+
+    /* Seasonal collection */
+
+    .seasonal-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--emerald);
+    }
+
+    .seasonal-section h2 {
+      color: var(--white);
+    }
+
+    .seasonal-section .section-heading > p {
+      color: rgba(255, 254, 250, 0.7);
+    }
+
+    .seasonal-section .eyebrow {
+      color: var(--champagne);
+    }
+
+    .seasonal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 23px;
+    }
+
+    .season-card {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.055);
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .season-card:hover {
+      background: rgba(255,255,255,0.10);
+      transform: translateY(-6px);
+    }
+
+    .season-card img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .season-content {
+      padding: 24px;
+    }
+
+    .season-content h3 {
+      margin-bottom: 12px;
+      color: var(--champagne);
+    }
+
+    .season-content p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.83rem;
+    }
+
+    .season-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--champagne);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Craftsmanship */
+
+    .craft-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .craft-copy h2 {
+      margin-bottom: 22px;
+    }
+
+    .craft-copy > p {
+      margin-bottom: 18px;
+      font-size: 0.91rem;
+    }
+
+    .craft-list {
+      display: grid;
+      gap: 19px;
+      margin-top: 28px;
+    }
+
+    .craft-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .craft-number {
+      display: grid;
+      width: 37px;
+      height: 37px;
+      flex-shrink: 0;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      font-family: var(--serif);
+    }
+
+    .craft-item h3 {
+      margin-bottom: 5px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .craft-item p {
+      font-size: 0.81rem;
+    }
+
+    .craft-image {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .craft-image img {
+      height: 260px;
+      border-radius: 150px 150px 18px 18px;
+      object-fit: cover;
+    }
+
+    .craft-image img:last-child {
+      height: 340px;
+      margin-top: 70px;
+      border-radius: 18px 18px 150px 150px;
+    }
+
+    /* Care guide */
+
+    .care-section {
+      background: #f1eee6;
+    }
+
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 23px;
+    }
+
+    .care-card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,254,250,0.78);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .care-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .care-icon {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 21px;
+      place-items: center;
+      border-radius: 50%;
+      background: #e9dfca;
+      color: var(--emerald);
+      font-size: 1.4rem;
+    }
+
+    .care-card h3 {
+      margin-bottom: 13px;
+      font-size: 1.35rem;
+    }
+
+    .care-card p {
+      font-size: 0.83rem;
+    }
+
+    .care-note {
+      margin-top: 25px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,254,250,0.75);
+      font-size: 0.84rem;
+    }
+
+    .care-note strong {
+      color: var(--emerald);
+    }
+
+    /* Location */
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: stretch;
+      gap: 35px;
+    }
+
+    .location-copy {
+      padding: 15px 0;
+    }
+
+    .location-copy h2 {
+      margin-bottom: 18px;
+    }
+
+    .location-copy > p {
+      margin-bottom: 25px;
+      font-size: 0.9rem;
+    }
+
+    .location-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .location-detail:last-child {
+      border-bottom: 0;
+    }
+
+    .location-icon {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      flex-shrink: 0;
+      place-items: center;
+      border-radius: 50%;
+      background: #eee4d2;
+      color: var(--emerald);
+    }
+
+    .location-detail h3 {
+      margin-bottom: 4px;
+      font-family: var(--sans);
+      font-size: 0.87rem;
+      font-weight: 800;
+    }
+
+    .location-detail p {
+      font-size: 0.81rem;
+    }
+
+    .map-mock {
+      position: relative;
+      display: grid;
+      min-height: 440px;
+      overflow: hidden;
+      place-items: center;
+      border: 1px solid rgba(18,61,52,0.09);
+      border-radius: 26px;
+      background:
+        linear-gradient(30deg, transparent 46%, rgba(255,255,255,0.8) 47%, rgba(255,255,255,0.8) 51%, transparent 52%),
+        linear-gradient(120deg, transparent 35%, rgba(255,255,255,0.85) 36%, rgba(255,255,255,0.85) 40%, transparent 41%),
+        #dce4d8;
+    }
+
+    .map-road {
+      position: absolute;
+      width: 150%;
+      height: 23px;
+      background: rgba(255,254,250,0.86);
+      transform: rotate(-26deg);
+    }
+
+    .map-road.road-two {
+      width: 125%;
+      height: 16px;
+      transform: rotate(47deg);
+    }
+
+    .map-road.road-three {
+      width: 100%;
+      height: 12px;
+      transform: rotate(7deg) translateY(70px);
+    }
+
+    .map-block {
+      position: absolute;
+      width: 70px;
+      height: 50px;
+      border-radius: 8px;
+      background: rgba(185,154,93,0.25);
+    }
+
+    .block-one {
+      top: 16%;
+      left: 13%;
+    }
+
+    .block-two {
+      right: 13%;
+      bottom: 17%;
+      width: 95px;
+      height: 65px;
+    }
+
+    .block-three {
+      right: 15%;
+      top: 13%;
+      width: 52px;
+      height: 75px;
+    }
+
+    .map-card {
+      position: relative;
+      z-index: 2;
+      width: min(280px, 80%);
+      padding: 27px;
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 20px;
+      background: rgba(255,254,250,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .map-pin {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 14px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--emerald);
+      color: var(--champagne);
+      font-size: 1.3rem;
+    }
+
+    .map-card h3 {
+      margin-bottom: 7px;
+      font-size: 1.4rem;
+    }
+
+    .map-card p {
+      font-size: 0.78rem;
+    }
+
+    .map-caption {
+      position: absolute;
+      right: 16px;
+      bottom: 15px;
+      z-index: 3;
+      color: #536159;
+      font-size: 0.65rem;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      padding: 65px 0 25px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 55px;
+    }
+
+    .site-footer .brand-name {
+      color: white;
+    }
+
+    .site-footer .brand-name small {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .footer-intro {
+      max-width: 360px;
+      margin-top: 19px;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.82rem;
+    }
+
+    .footer-title {
+      margin-bottom: 18px;
+      color: var(--champagne);
+      font-family: var(--sans);
+      font-size: 0.77rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 11px;
+    }
+
+    .footer-links a,
+    .footer-links p {
+      color: rgba(255,255,255,0.67);
+      font-size: 0.8rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--champagne);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 45px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.48);
+      font-size: 0.72rem;
+    }
+
+    /* Lightbox */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background: rgba(8, 22, 18, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .lightbox.open {
+      display: flex;
+      animation: fade-in 0.25s ease;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      width: min(100%, 1000px);
+      max-height: 92vh;
+      text-align: center;
+    }
+
+    .lightbox-image {
+      width: auto;
+      max-width: 100%;
+      max-height: 75vh;
+      margin: 0 auto;
+      border-radius: 15px;
+      object-fit: contain;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+    }
+
+    .lightbox-caption {
+      margin-top: 16px;
+      color: white;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+    }
+
+    .lightbox-description {
+      margin-top: 5px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      font-size: 1.6rem;
+    }
+
+    .lightbox-close:hover {
+      background: white;
+      color: var(--emerald);
+    }
+
+    /* Detail dialog */
+
+    .detail-dialog {
+      position: fixed;
+      inset: 0;
+      z-index: 180;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(8,22,18,0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .detail-dialog.open {
+      display: flex;
+      animation: fade-in 0.2s ease;
+    }
+
+    .dialog-panel {
+      position: relative;
+      width: min(590px, 100%);
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 38px;
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 24px;
+      background: var(--cream);
+      box-shadow: var(--shadow);
+    }
+
+    .dialog-panel h2 {
+      padding-right: 25px;
+      font-size: 2rem;
+    }
+
+    .dialog-panel > p {
+      margin-top: 16px;
+      font-size: 0.88rem;
+    }
+
+    .dialog-panel .detail-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .dialog-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: grid;
+      width: 37px;
+      height: 37px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: white;
+      color: var(--emerald);
+      font-size: 1.3rem;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1050px) {
+      .nav-links {
+        gap: 15px;
+      }
+
+      .hero-grid {
+        gap: 35px;
+      }
+
+      .hero-visual {
+        min-height: 460px;
+      }
+
+      .about-grid,
+      .craft-grid {
+        gap: 40px;
+      }
+
+      .catalog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 780px) {
+      .container {
+        width: min(var(--container), calc(100% - 32px));
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .nav-container {
+        min-height: 72px;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 16px;
+        left: 16px;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255,254,250,0.97);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav-links a {
+        padding: 12px;
+        border-radius: 10px;
+      }
+
+      .nav-links a:hover {
+        background: #f0e8da;
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .hero {
+        padding: 52px 0 65px;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .craft-grid,
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(3rem, 12vw, 5rem);
+      }
+
+      .hero-visual {
+        min-height: 440px;
+      }
+
+      .hero-photo {
+        inset: 0 18px 20px 20px;
+      }
+
+      .hero-stamp {
+        right: 0;
+        width: 82px;
+        height: 82px;
+        font-size: 0.76rem;
+      }
+
+      .qualities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px 10px;
+      }
+
+      .quality {
+        justify-content: flex-start;
+        font-size: 0.73rem;
+      }
+
+      .about-image {
+        min-height: 420px;
+      }
+
+      .about-copy {
+        order: -1;
+      }
+
+      .catalog-grid,
+      .seasonal-grid,
+      .care-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .catalog-card:last-child,
+      .season-card:last-child {
+        grid-column: auto;
+      }
+
+      .card-content,
+      .season-content {
+        padding: 19px;
+      }
+
+      .card-content h3 {
+        font-size: 1.3rem;
+      }
+
+      .craft-image img {
+        height: 230px;
+      }
+
+      .craft-image img:last-child {
+        height: 290px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand-name {
+        font-size: 0.96rem;
+      }
+
+      .brand-name small {
+        font-size: 0.51rem;
+      }
+
+      .brand-symbol {
+        width: 37px;
+        height: 37px;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-visual {
+        min-height: 355px;
+      }
+
+      .hero-caption {
+        padding: 15px;
+      }
+
+      .hero-caption strong {
+        font-size: 1rem;
+      }
+
+      .section-heading {
+        margin-bottom: 28px;
+      }
+
+      .catalog-grid,
+      .seasonal-grid,
+      .care-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-image {
+        aspect-ratio: 4 / 3;
+      }
+
+      .season-card img {
+        aspect-ratio: 4 / 3;
+      }
+
+      .qualities-grid {
+        gap: 16px 8px;
+      }
+
+      .quality {
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .quality-icon {
+        width: 33px;
+        height: 33px;
+      }
+
+      .about-image {
+        min-height: 340px;
+      }
+
+      .craft-image {
+        gap: 10px;
+      }
+
+      .craft-image img {
+        height: 190px;
+      }
+
+      .craft-image img:last-child {
+        height: 245px;
+        margin-top: 35px;
+      }
+
+      .map-mock {
+        min-height: 340px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 27px;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column: auto;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .dialog-panel {
+        padding: 28px 23px;
+      }
+
+      .dialog-panel h2 {
+        font-size: 1.7rem;
+      }
+
+      .lightbox-close {
+        top: -14px;
+        right: -8px;
+      }
+      .announcement,
+.site-header {
+  display: none !important;
+}
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    ART OF THOUGHTFUL GIFTING · BOUQUET & HAMPERS STUDIO
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a class="brand" href="#beranda" aria-label="Aura Bouquet, kembali ke beranda">
+        <span class="brand-symbol">A</span>
+        <span class="brand-name">
+          Aura Bouquet
+          <small>& Hampers Studio</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="main-navigation" aria-label="Navigasi utama">
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang Kami</a>
+        <a href="#galeri">Galeri Koleksi</a>
+        <a href="#perawatan">Panduan Perawatan</a>
+        <a href="#lokasi">Lokasi</a>
+      </nav>
+
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Buka menu navigasi"
+        aria-expanded="false"
+        aria-controls="main-navigation"
+      >☰</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+
+        <div class="hero-copy">
+          <div class="eyebrow">An expression of elegance</div>
+
+          <h1>
+            Keindahan dalam setiap
+            <span class="text-gold">rangkaian.</span>
+          </h1>
+
+          <p class="hero-description">
+            Selamat datang di Aura Bouquet & Hampers Studio, ruang kreatif
+            yang menghadirkan buket dan hampers dengan sentuhan artistik,
+            detail yang diperhatikan, serta keindahan yang dirancang untuk
+            menemani berbagai momen berharga dalam kehidupan.
+          </p>
+
+          <p>
+            Berlokasi di Jl. Pancasila, kami mengapresiasi seni merangkai
+            hadiah sebagai bentuk perhatian, ungkapan kasih sayang, dan
+            cara sederhana untuk membuat seseorang merasa istimewa.
+          </p>
+
+          <div class="hero-note">
+            <span class="note-symbol">✦</span>
+            <span>
+              Setiap detail memiliki cerita.<br>
+              Setiap rangkaian membawa makna.
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-photo">
+            <img
+              src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1200&q=90"
+              alt="Rangkaian buket bunga dengan nuansa elegan"
+              fetchpriority="high"
+            >
+          </div>
+
+          <div class="hero-stamp">
+            Thoughtfully<br>
+            Made<br>
+            With Love
+          </div>
+
+          <div class="hero-caption">
+            <strong>Beauty in every detail</strong>
+            <span>Sentuhan artistik untuk momen yang berarti.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BRAND QUALITIES -->
+    <section class="qualities" aria-label="Karakteristik Aura Bouquet">
+      <div class="container qualities-grid">
+        <div class="quality">
+          <span class="quality-icon">✿</span>
+          <span>Rangkaian Artistik</span>
+        </div>
+
+        <div class="quality">
+          <span class="quality-icon">✧</span>
+          <span>Detail Penuh Perhatian</span>
+        </div>
+
+        <div class="quality">
+          <span class="quality-icon">❋</span>
+          <span>Inspirasi Personal</span>
+        </div>
+
+        <div class="quality">
+          <span class="quality-icon">♡</span>
+          <span>Elegan dan Bermakna</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="tentang">
+      <div class="container about-grid">
+
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=85"
+            alt="Bunga segar dengan warna lembut"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="about-copy">
+          <div class="eyebrow">Our philosophy</div>
+
+          <h2>
+            Bukan sekadar hadiah,
+            melainkan sebuah
+            <span class="text-gold">ungkapan rasa.</span>
+          </h2>
+
+          <div class="divider"></div>
+
+          <p>
+            Aura Bouquet & Hampers Studio berangkat dari keyakinan bahwa
+            hadiah memiliki nilai yang lebih dalam daripada bentuk fisiknya.
+            Sebuah buket dapat menjadi ungkapan cinta, sebuah hampers dapat
+            menjadi tanda terima kasih, dan sebuah rangkaian sederhana dapat
+            menyimpan kenangan yang bertahan lama.
+          </p>
+
+          <p>
+            Kami mengangkat seni merangkai sebagai proses kreatif yang
+            menggabungkan harmoni warna, pemilihan material, keseimbangan
+            bentuk, serta kerapian pengerjaan. Setiap elemen diperhatikan
+            agar keseluruhan rangkaian terasa selaras dan menyenangkan
+            untuk dipandang.
+          </p>
+
+          <p>
+            Kami juga menghargai karakter setiap bahan. Bunga segar
+            memiliki keindahan alami yang dinamis, bunga artificial
+            memberikan kebebasan bentuk dan daya tahan, sementara buah,
+            kemasan, pita, dan ornamen dipilih berdasarkan fungsi serta
+            kesesuaiannya dengan konsep rangkaian.
+          </p>
+
+          <p>
+            Melalui pendekatan yang mengutamakan estetika dan ketelitian,
+            Aura ingin menjadi bagian dari cerita pelanggan dalam merayakan
+            hubungan, pencapaian, tradisi keluarga, dan berbagai peristiwa
+            bermakna.
+          </p>
+
+          <div class="signature">Crafted with intention.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MAIN CATALOG -->
+    <section class="section catalog-section" id="galeri">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">The collection</div>
+          <h2>
+            Galeri karya dan
+            <span class="text-gold">inspirasi.</span>
+          </h2>
+          <p>
+            Kenali karakter setiap koleksi Aura Bouquet. Galeri ini
+            menghadirkan referensi visual dan informasi mengenai bahan,
+            gaya, serta karakter rangkaian untuk berbagai kebutuhan.
+            Pilih gambar untuk melihatnya dalam ukuran lebih besar atau
+            buka informasi detail koleksi.
+          </p>
+        </div>
+
+        <div class="catalog-grid">
+
+          <!-- CATEGORY 1 -->
+          <article class="catalog-card">
+            <button
+              class="card-image lightbox-trigger"
+              type="button"
+              data-image="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1500&q=90"
+              data-title="Buket Bunga Segar & Artificial"
+              data-description="Rangkaian bunga dengan harmoni warna dan tekstur."
+              aria-label="Perbesar gambar buket bunga"
+              style="display:block;width:100%;border:0;text-align:left"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=850&q=85"
+                alt="Buket bunga dengan tampilan romantis"
+                loading="lazy"
+              >
+              <span class="image-index">01</span>
+              <span class="zoom-indicator">↗</span>
+            </button>
+
+            <div class="card-content">
+              <span class="card-category">Floral artistry</span>
+              <h3>Buket Bunga Segar & Artificial</h3>
+
+              <p>
+                Koleksi buket bunga yang mengutamakan keseimbangan warna,
+                siluet rangkaian, dan keindahan setiap kelopak. Bunga segar
+                menghadirkan karakter alami dan aroma yang lembut, sedangkan
+                bunga artificial menawarkan bentuk dekoratif yang dapat
+                dinikmati lebih lama dengan perawatan yang tepat.
+              </p>
+
+              <p>
+                Gaya rangkaian dapat terinspirasi dari nuansa romantis,
+                minimalis, klasik, modern, hingga komposisi bernuansa
+                garden. Kertas pembungkus, pita, dan detail pelengkap
+                menjadi bagian dari kesatuan visual.
+              </p>
+
+              <button
+                class="text-button detail-trigger"
+                type="button"
+                data-title="Buket Bunga Segar & Artificial"
+                data-description="Buket bunga dirancang melalui perpaduan bentuk, tekstur, warna, dan komposisi. Bunga segar memiliki keindahan alami yang memerlukan air bersih serta penanganan yang sesuai. Bunga artificial lebih fleksibel untuk dekorasi dan kenang-kenangan jangka panjang. Pemilihan jenis bunga dan material pembungkus memengaruhi karakter akhir rangkaian."
+                data-points="Bunga segar dan bunga artificial|Pilihan nuansa romantis, klasik, minimalis, atau modern|Perpaduan kertas pembungkus dan pita dekoratif|Kartu ucapan sebagai elemen pelengkap|Perawatan disesuaikan dengan jenis bunga"
+              >
+                Lihat informasi koleksi <span>→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CATEGORY 2 -->
+          <article class="catalog-card">
+            <button
+              class="card-image lightbox-trigger"
+              type="button"
+              data-image="https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=1500&q=90"
+              data-title="Buket Buah Segar Pilihan"
+              data-description="Komposisi buah dengan tampilan yang segar."
+              aria-label="Perbesar gambar buket buah"
+              style="display:block;width:100%;border:0;text-align:left"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=850&q=85"
+                alt="Komposisi buah sebagai inspirasi hadiah"
+                loading="lazy"
+              >
+              <span class="image-index">02</span>
+              <span class="zoom-indicator">↗</span>
+            </button>
+
+            <div class="card-content">
+              <span class="card-category">Fresh selection</span>
+              <h3>Buket Buah Segar Pilihan</h3>
+
+              <p>
+                Buket buah memadukan warna alami, bentuk, dan variasi
+                tekstur menjadi sebuah presentasi yang menarik. Merah
+                dari apel, kuning dari jeruk, dan hijau dari buah tertentu
+                dapat menciptakan komposisi visual yang cerah dan berkesan.
+              </p>
+
+              <p>
+                Dalam konsep penyusunannya, kebersihan buah, kondisi
+                permukaan, kematangan, dan keamanan penataan merupakan
+                hal penting. Kemasan dan pelindung buah juga perlu
+                disesuaikan agar tampilan tetap rapi selama penanganan.
+              </p>
+
+              <button
+                class="text-button detail-trigger"
+                type="button"
+                data-title="Buket Buah Segar Pilihan"
+                data-description="Buket buah menonjolkan keindahan warna dan kesegaran bahan pangan. Buah perlu dipilih dalam kondisi baik, dibersihkan dengan benar, dan ditata menggunakan penyangga serta kemasan yang sesuai. Penyimpanan dan ketahanan setiap buah berbeda, sehingga penanganannya sebaiknya mengikuti karakter masing-masing jenis."
+                data-points="Buah pilihan dengan kondisi visual yang baik|Kombinasi warna dan ukuran untuk komposisi yang harmonis|Penataan yang mempertimbangkan stabilitas buah|Kemasan yang sesuai untuk menjaga kebersihan|Perhatikan suhu penyimpanan dan anjuran konsumsi buah"
+              >
+                Lihat informasi koleksi <span>→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CATEGORY 3 -->
+          <article class="catalog-card">
+            <button
+              class="card-image lightbox-trigger"
+              type="button"
+              data-image="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=1500&q=90"
+              data-title="Buket Uang Kreatif & Rapi"
+              data-description="Inspirasi hadiah dengan susunan dekoratif."
+              aria-label="Perbesar gambar inspirasi buket uang"
+              style="display:block;width:100%;border:0;text-align:left"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=850&q=85"
+                alt="Inspirasi hadiah dengan kemasan dekoratif"
+                loading="lazy"
+              >
+              <span class="image-index">03</span>
+              <span class="zoom-indicator">↗</span>
+            </button>
+
+            <div class="card-content">
+              <span class="card-category">Creative presentation</span>
+              <h3>Buket Uang Kreatif & Rapi</h3>
+
+              <p>
+                Buket uang menggabungkan unsur dekoratif dan penataan
+                yang terstruktur. Lipatan atau susunan uang dirancang
+                agar terlihat rapi tanpa menghilangkan keterbacaan
+                dan kemudahan saat uang hendak diambil.
+              </p>
+
+              <p>
+                Elemen pendukung seperti bunga artificial, pita,
+                kertas pembungkus, ornamen, serta kartu ucapan dapat
+                memperkuat tema rangkaian. Kerapian, kestabilan susunan,
+                dan penggunaan bahan yang tidak merusak uang menjadi
+                pertimbangan utama.
+              </p>
+
+              <button
+                class="text-button detail-trigger"
+                type="button"
+                data-title="Buket Uang Kreatif & Rapi"
+                data-description="Buket uang merupakan presentasi hadiah yang menggabungkan susunan uang dengan elemen dekoratif. Desain yang baik mempertahankan susunan tetap stabil, menghindari perekat yang merusak uang, dan menyediakan akses agar setiap lembar dapat dilepaskan dengan mudah. Ornamen dipilih agar mendukung tampilan, bukan menutupi keseluruhan susunan."
+                data-points="Susunan uang yang rapi dan mudah diakses|Penyangga serta pengikat yang sesuai|Kombinasi pita, kertas, dan bunga dekoratif|Konsep warna yang selaras dengan acara|Penataan yang mempertimbangkan keamanan uang"
+              >
+                Lihat informasi koleksi <span>→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CATEGORY 4 -->
+          <article class="catalog-card">
+            <button
+              class="card-image lightbox-trigger"
+              type="button"
+              data-image="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1500&q=90"
+              data-title="Hampers Pernikahan & Seserahan"
+              data-description="Inspirasi penataan hadiah untuk momen pernikahan."
+              aria-label="Perbesar gambar inspirasi seserahan"
+              style="display:block;width:100%;border:0;text-align:left"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=850&q=85"
+                alt="Inspirasi dekorasi pernikahan yang elegan"
+                loading="lazy"
+              >
+              <span class="image-index">04</span>
+              <span class="zoom-indicator">↗</span>
+            </button>
+
+            <div class="card-content">
+              <span class="card-category">Wedding collection</span>
+              <h3>Hampers Pernikahan & Seserahan</h3>
+
+              <p>
+                Seserahan merupakan bagian dari tradisi yang memiliki
+                nilai simbolis dan personal bagi keluarga. Penataannya
+                membutuhkan keselarasan antara isi, warna, bentuk
+                wadah, ornamen, dan konsep keseluruhan acara.
+              </p>
+
+              <p>
+                Palet ivory, champagne, dusty rose, atau emerald dapat
+                menjadi inspirasi untuk menciptakan tampilan yang
+                berkelas. Kerapian susunan dan kemudahan membawa setiap
+                wadah turut menentukan kenyamanan dan keindahan presentasi.
+              </p>
+
+              <button
+                class="text-button detail-trigger"
+                type="button"
+                data-title="Hampers Pernikahan & Seserahan"
+                data-description="Koleksi seserahan menekankan keserasian antara wadah, isi, ornamen, dan tema pernikahan. Penataan yang baik memperhatikan keseimbangan visual, keamanan barang, kestabilan selama dipindahkan, serta kemudahan untuk melihat dan mengambil isi. Pilihan warna dapat diselaraskan dengan dekorasi acara atau preferensi keluarga."
+                data-points="Konsep penataan yang selaras dengan tema pernikahan|Wadah dan ornamen dekoratif yang tertata|Pilihan palet ivory, champagne, dusty rose, atau emerald|Penyusunan isi dengan memperhatikan stabilitas|Detail personal yang mengikuti karakter acara"
+              >
+                Lihat informasi koleksi <span>→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CATEGORY 5 -->
+          <article class="catalog-card">
+            <button
+              class="card-image lightbox-trigger"
+              type="button"
+              data-image="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=1500&q=90"
+              data-title="Hampers Natal & Akhir Tahun"
+              data-description="Inspirasi hampers dengan suasana hangat dan meriah."
+              aria-label="Perbesar gambar inspirasi hampers Natal"
+              style="display:block;width:100%;border:0;text-align:left"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=850&q=85"
+                alt="Hampers dengan kemasan hadiah yang meriah"
+                loading="lazy"
+              >
+              <span class="image-index">05</span>
+              <span class="zoom-indicator">↗</span>
+            </button>
+
+            <div class="card-content">
+              <span class="card-category">Seasonal collection</span>
+              <h3>Hampers Natal & Akhir Tahun</h3>
+
+              <p>
+                Koleksi akhir tahun terinspirasi dari suasana hangat,
+                kebersamaan, dan semangat berbagi. Elemen hijau, merah,
+                putih, serta sentuhan gold dapat menghadirkan nuansa
+                perayaan yang klasik maupun modern.
+              </p>
+
+              <p>
+                Isi hampers dapat terinspirasi dari makanan kemasan,
+                perlengkapan minum, aksesori rumah, dan barang pilihan
+                lainnya. Komposisi dibuat dengan mempertimbangkan
+                keserasian isi dan keamanan selama penyimpanan.
+              </p>
+
+              <button
+                class="text-button detail-trigger"
+                type="button"
+                data-title="Hampers Natal & Akhir Tahun"
+                data-description="Hampers Natal dan akhir tahun mengutamakan nuansa hangat serta presentasi yang meriah. Palet hijau, merah, putih, dan gold merupakan inspirasi klasik, sementara warna netral dapat menciptakan tampilan yang lebih modern. Produk pangan perlu disusun dengan memperhatikan tanggal kedaluwarsa, kondisi kemasan, dan petunjuk penyimpanan."
+                data-points="Inspirasi warna hijau, merah, putih, dan gold|Kemasan dekoratif dengan pita dan ornamen musiman|Kombinasi makanan kemasan dan perlengkapan pilihan|Penyusunan isi yang rapi dan stabil|Perhatikan label, tanggal kedaluwarsa, dan penyimpanan"
+              >
+                Lihat informasi koleksi <span>→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CATEGORY 6 -->
+          <article class="catalog-card">
+            <button
+              class="card-image lightbox-trigger"
+              type="button"
+              data-image="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=1500&q=90"
+              data-title="Hampers Lebaran & Imlek"
+              data-description="Inspirasi hadiah untuk perayaan dan kebersamaan keluarga."
+              aria-label="Perbesar gambar inspirasi hampers perayaan"
+              style="display:block;width:100%;border:0;text-align:left"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=850&q=85"
+                alt="Inspirasi kemasan hampers untuk hari perayaan"
+                loading="lazy"
+              >
+              <span class="image-index">06</span>
+              <span class="zoom-indicator">↗</span>
+            </button>
+
+            <div class="card-content">
+              <span class="card-category">Festive moments</span>
+              <h3>Hampers Lebaran & Imlek</h3>
+
+              <p>
+                Setiap perayaan memiliki suasana dan simbol visual
+                tersendiri. Hampers Lebaran dapat mengambil inspirasi
+                dari warna ivory, hijau, dan gold yang memberikan
+                kesan hangat, bersih, dan penuh kebersamaan.
+              </p>
+
+              <p>
+                Untuk Imlek, warna merah dan gold dapat menghadirkan
+                nuansa meriah. Ornamen serta kombinasi isi dipilih
+                dengan memperhatikan kesesuaian tema, preferensi
+                penerima, dan penghormatan terhadap tradisi.
+              </p>
+
+              <button
+                class="text-button detail-trigger"
+                type="button"
+                data-title="Hampers Lebaran & Imlek"
+                data-description="Koleksi hampers perayaan mengambil inspirasi dari tradisi, kebersamaan, dan kebiasaan berbagi. Lebaran dapat menggunakan palet ivory, hijau, dan gold, sementara Imlek dapat terinspirasi dari merah dan gold. Pemilihan isi, ornamen, dan simbol dekoratif sebaiknya memperhatikan kesesuaian budaya serta kebutuhan penerima."
+                data-points="Inspirasi Lebaran: ivory, hijau, dan gold|Inspirasi Imlek: merah dan gold|Penataan isi dan kemasan yang rapi|Ornamen yang sesuai dengan suasana perayaan|Pemilihan isi yang memperhatikan preferensi penerima"
+              >
+                Lihat informasi koleksi <span>→</span>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEASONAL STORIES -->
+    <section class="section seasonal-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Celebrate every season</div>
+          <h2>Setiap perayaan punya bahasa keindahannya sendiri.</h2>
+          <p>
+            Warna, ornamen, dan isi hadiah dapat menghadirkan suasana
+            yang berbeda. Inspirasi musiman membantu setiap rangkaian
+            terasa lebih dekat dengan tradisi dan karakter perayaannya.
+          </p>
+        </div>
+
+        <div class="seasonal-grid">
+
+          <article class="season-card">
+            <img
+              src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=85"
+              alt="Inspirasi hadiah Natal"
+              loading="lazy"
+            >
+            <div class="season-content">
+              <span class="season-label">December moments</span>
+              <h3>Christmas Elegance</h3>
+              <p>
+                Nuansa hijau, merah, dan gold menghidupkan kesan hangat
+                melalui pita, ornamen dekoratif, dan komposisi kemasan
+                yang terinspirasi dari suasana akhir tahun.
+              </p>
+            </div>
+          </article>
+
+          <article class="season-card">
+            <img
+              src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=900&q=85"
+              alt="Inspirasi hampers Lebaran"
+              loading="lazy"
+            >
+            <div class="season-content">
+              <span class="season-label">Moments of togetherness</span>
+              <h3>Lebaran Serenity</h3>
+              <p>
+                Palet lembut, kemasan bersih, dan detail gold dapat
+                menghadirkan kesan hangat untuk menyambut silaturahmi
+                dan berbagi kebahagiaan bersama keluarga.
+              </p>
+            </div>
+          </article>
+
+          <article class="season-card">
+            <img
+              src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=85"
+              alt="Inspirasi hadiah Imlek"
+              loading="lazy"
+            >
+            <div class="season-content">
+              <span class="season-label">A new beginning</span>
+              <h3>Lunar Celebration</h3>
+              <p>
+                Sentuhan merah dan gold dapat menghadirkan tampilan
+                meriah untuk perayaan Imlek, dengan komposisi dekoratif
+                yang memperhatikan makna dan tradisi.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CRAFTSMANSHIP -->
+    <section class="section">
+      <div class="container craft-grid">
+
+        <div class="craft-copy">
+          <div class="eyebrow">Behind the artistry</div>
+
+          <h2>
+            Keindahan dimulai dari
+            <span class="text-gold">ketelitian.</span>
+          </h2>
+
+          <p>
+            Rangkaian yang terlihat sederhana sering kali melalui proses
+            pertimbangan yang panjang. Komposisi warna, proporsi, titik
+            fokus, serta tekstur setiap bahan perlu diselaraskan agar
+            menghasilkan tampilan yang utuh.
+          </p>
+
+          <p>
+            Dalam seni merangkai, kemasan bukan hanya pelindung.
+            Kertas, pita, wadah, dan ornamen membantu membangun karakter
+            hadiah sekaligus menegaskan pesan yang ingin disampaikan.
+          </p>
+
+          <p>
+            Perhatian terhadap detail juga mencakup kebersihan area kerja,
+            pemilihan bahan yang sesuai, dan penanganan produk secara
+            hati-hati. Prinsip ini penting terutama pada bunga segar
+            dan buah yang memerlukan kondisi penyimpanan khusus.
+          </p>
+
+          <div class="craft-list">
+
+            <div class="craft-item">
+              <span class="craft-number">01</span>
+              <div>
+                <h3>Kurasi material</h3>
+                <p>
+                  Mempertimbangkan warna, tekstur, kondisi, dan
+                  kesesuaian setiap material dengan konsep rangkaian.
+                </p>
+              </div>
+            </div>
+
+            <div class="craft-item">
+              <span class="craft-number">02</span>
+              <div>
+                <h3>Harmoni komposisi</h3>
+                <p>
+                  Menyatukan elemen utama dan pendukung agar tidak
+                  saling mendominasi serta tetap nyaman dipandang.
+                </p>
+              </div>
+            </div>
+
+            <div class="craft-item">
+              <span class="craft-number">03</span>
+              <div>
+                <h3>Finishing yang rapi</h3>
+                <p>
+                  Memperhatikan pengikat, lipatan, stabilitas,
+                  dan tampilan akhir setiap rangkaian.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="craft-image">
+          <img
+            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=85"
+            alt="Detail bunga dengan tekstur alami"
+            loading="lazy"
+          >
+          <img
+            src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=700&q=85"
+            alt="Komposisi buket bunga dekoratif"
+            loading="lazy"
+          >
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CARE GUIDE -->
+    <section class="section care-section" id="perawatan">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">A little care goes a long way</div>
+          <h2>
+            Panduan menjaga
+            <span class="text-gold">keindahan hadiah.</span>
+          </h2>
+          <p>
+            Setiap bahan memiliki kebutuhan yang berbeda. Dengan
+            penanganan yang sesuai, buket dan hampers dapat tetap
+            rapi, menarik, serta terjaga kualitasnya.
+          </p>
+        </div>
+
+        <div class="care-grid">
+
+          <article class="care-card">
+            <div class="care-icon">✿</div>
+            <h3>Bunga Segar</h3>
+            <p>
+              Tempatkan bunga di area yang sejuk dengan pencahayaan
+              tidak langsung. Hindari paparan panas, angin kencang,
+              dan buah matang yang dapat mempercepat proses penuaan
+              bunga tertentu.
+            </p>
+            <p style="margin-top:13px">
+              Untuk bunga potong, gunakan wadah bersih dan air yang
+              sesuai. Pangkas bagian bawah batang secara hati-hati
+              dan ganti air secara berkala. Buang daun yang terendam
+              agar kebersihan air tetap terjaga.
+            </p>
+          </article>
+
+          <article class="care-card">
+            <div class="care-icon">❋</div>
+            <h3>Bunga Artificial</h3>
+            <p>
+              Jauhkan dari debu berlebihan dan kelembapan yang dapat
+              memengaruhi bahan tertentu. Bersihkan dengan kuas
+              lembut atau kain kering untuk bagian yang mudah dijangkau.
+            </p>
+            <p style="margin-top:13px">
+              Hindari bahan pembersih keras tanpa mengetahui karakter
+              materialnya. Simpan di tempat kering dan jangan menekan
+              kelopak atau batang terlalu kuat agar bentuk rangkaian
+              tetap terjaga.
+            </p>
+          </article>
+
+          <article class="care-card">
+            <div class="care-icon">❧</div>
+            <h3>Buket Buah</h3>
+            <p>
+              Buah segar memerlukan penanganan higienis. Perhatikan
+              kondisi buah, kemasan, dan petunjuk penyimpanan sesuai
+              jenis buah yang digunakan.
+            </p>
+            <p style="margin-top:13px">
+              Untuk konsumsi, ikuti panduan pencucian dan penyimpanan
+              yang sesuai. Jangan menganggap dekorasi, tusuk, pita,
+              atau pembungkus sebagai bahan yang aman untuk dikonsumsi.
+              Hindari menyimpan buah dalam kondisi yang tidak sesuai.
+            </p>
+          </article>
+
+          <article class="care-card">
+            <div class="care-icon">✧</div>
+            <h3>Buket Uang</h3>
+            <p>
+              Letakkan rangkaian di tempat kering dan jauh dari
+              percikan air. Hindari tekanan berlebih yang dapat
+              membuat susunan, lipatan, atau ornamen berubah bentuk.
+            </p>
+            <p style="margin-top:13px">
+              Jangan menggunakan perekat yang dapat meninggalkan
+              residu atau merusak uang. Saat melepas uang dari
+              rangkaian, lakukan perlahan agar material pendukung
+              tidak menarik atau merobek lembaran.
+            </p>
+          </article>
+
+          <article class="care-card">
+            <div class="care-icon">♡</div>
+            <h3>Seserahan & Hampers</h3>
+            <p>
+              Simpan kemasan pada permukaan rata, kering, dan stabil.
+              Hindari menumpuk benda berat di atas kotak dekoratif
+              karena dapat merusak bentuk, pita, atau ornamen.
+            </p>
+            <p style="margin-top:13px">
+              Untuk produk makanan, periksa label, tanggal kedaluwarsa,
+              kondisi segel, dan anjuran penyimpanan. Pisahkan produk
+              yang memiliki kebutuhan suhu khusus dari benda dekoratif
+              yang tidak sesuai untuk kontak langsung dengan pangan.
+            </p>
+          </article>
+
+          <article class="care-card">
+            <div class="care-icon">❄</div>
+            <h3>Koleksi Musiman</h3>
+            <p>
+              Ornamen musiman sebaiknya disimpan setelah dibersihkan
+              dan dikeringkan. Gunakan wadah yang melindungi bagian
+              rapuh, serta hindari tekanan pada dekorasi yang mudah
+              patah atau berubah bentuk.
+            </p>
+            <p style="margin-top:13px">
+              Untuk hampers berisi pangan, prioritaskan petunjuk
+              penyimpanan pada kemasan. Dekorasi yang indah tetap
+              perlu mendukung kebersihan dan keamanan isi.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="care-note">
+          <strong>Catatan penting:</strong>
+          Daya tahan setiap produk berbeda-beda, bergantung pada jenis
+          bunga atau buah, kondisi lingkungan, material kemasan, dan
+          cara penanganannya. Ikuti petunjuk khusus pada produk apabila
+          tersedia.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="section" id="lokasi">
+      <div class="container location-grid">
+
+        <div class="location-copy">
+          <div class="eyebrow">Visit our studio</div>
+
+          <h2>
+            Temukan kami di
+            <span class="text-gold">Jl. Pancasila.</span>
+          </h2>
+
+          <p>
+            Aura Bouquet & Hampers Studio hadir sebagai ruang inspirasi
+            untuk mengenal seni buket dan hampers. Informasi berikut
+            membantu pengunjung mengetahui alamat dan jam operasional
+            yang ditampilkan pada profil ini.
+          </p>
+
+          <div class="location-detail">
+            <span class="location-icon">⌖</span>
+            <div>
+              <h3>Alamat studio</h3>
+              <p>Jl. Pancasila</p>
+              <p>
+                Informasi nomor bangunan dan wilayah administratif
+                belum dicantumkan.
+              </p>
+            </div>
+          </div>
+
+          <div class="location-detail">
+            <span class="location-icon">◷</span>
+            <div>
+              <h3>Jam operasional</h3>
+              <p>
+                Senin–Sabtu: 09.00–18.00 WIB<br>
+                Minggu dan hari libur: berdasarkan informasi pengelola.
+              </p>
+              <p>
+                Jadwal ini merupakan contoh tampilan dan perlu
+                dikonfirmasi sebelum dipublikasikan.
+              </p>
+            </div>
+          </div>
+
+          <div class="location-detail">
+            <span class="location-icon">✉</span>
+            <div>
+              <h3>Kontak informasi</h3>
+              <p>
+                Nomor telepon dan alamat email resmi belum dicantumkan.
+                Tambahkan kontak resmi toko pada bagian ini setelah
+                tersedia.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="map-mock"
+          role="img"
+          aria-label="Ilustrasi peta dekoratif untuk lokasi Aura Bouquet di Jalan Pancasila"
+        >
+          <div class="map-road"></div>
+          <div class="map-road road-two"></div>
+          <div class="map-road road-three"></div>
+
+          <div class="map-block block-one"></div>
+          <div class="map-block block-two"></div>
+          <div class="map-block block-three"></div>
+
+          <div class="map-card">
+            <div class="map-pin">⌖</div>
+            <h3>Aura Bouquet</h3>
+            <p>
+              Bouquet & Hampers Studio<br>
+              Jl. Pancasila
+            </p>
+            <div class="divider" style="margin:17px auto"></div>
+            <p>Art of Thoughtful Gifting</p>
+          </div>
+
+          <span class="map-caption">
+            Ilustrasi peta — bukan koordinat navigasi aktual
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <a class="brand" href="#beranda">
+            <span class="brand-symbol">A</span>
+            <span class="brand-name">
+              Aura Bouquet
+              <small>& Hampers Studio</small>
+            </span>
+          </a>
+
+          <p class="footer-intro">
+            Merangkai keindahan melalui buket dan hampers yang
+            mengutamakan harmoni, detail, dan makna. Sebuah ruang
